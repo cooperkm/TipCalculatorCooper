@@ -6,4 +6,5 @@
     <string name="tip2">20%</string>
     <string name="tip3">25%</string>
     <string name="cTip">Custom</string>
+    <string name="numPeople">Number of people</string>
 </resources>

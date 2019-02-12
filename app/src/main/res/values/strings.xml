@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TipCalculator-counter</string>
-    <string name="tip_input">Enter Tip Percentage</string>
-    <string name="rb_label">Tip Amount</string>
+    <string name="tip_input">Enter Percentage</string>
+    <string name="rb_label">Tip Percentage</string>
     <string name="tip1">15%</string>
     <string name="tip2">20%</string>
     <string name="tip3">25%</string>

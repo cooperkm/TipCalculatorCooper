@@ -7,4 +7,10 @@
     <string name="tip3">25%</string>
     <string name="cTip">Custom</string>
     <string name="numPeople">Number of people</string>
+    <string name="billAmount">Bill amount</string>
+    <string name="calcButton">Calculate</string>
+    <string name="resButton">Reset</string>
+    <string name="tipTotal">Tip total:</string>
+    <string name="billTotal">Bill total:</string>
+    <string name="totalPerPerson">Total per person:</string>
 </resources>

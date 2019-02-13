@@ -14,7 +14,7 @@
         android:layout_marginEnd="38dp"
         android:checkedButton="@+id/tip15"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/rg_label">
 
         <RadioButton
             android:id="@+id/tip15"
@@ -50,7 +50,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/rg_label"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginTop="32dp"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/tf_tipPercent"
         android:layout_width="144dp"
         android:layout_height="46dp"
         android:layout_marginEnd="16dp"
@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/tf_numOfPeople"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
@@ -83,74 +83,78 @@
         android:hint="@string/numPeople"
         android:inputType="number"
         android:textAlignment="center"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/rg_label"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/tf_billAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="@string/billAmount"
         android:inputType="number"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_numOfPeople" />
 
     <Button
         android:id="@+id/resetButton"
         android:layout_width="191dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:text="@string/resButton"
         app:layout_constraintEnd_toStartOf="@+id/calcButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_tipPercent" />
 
     <Button
         android:id="@+id/calcButton"
         android:layout_width="191dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:text="@string/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/resetButton"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <TextView
-        android:id="@+id/tipTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/tipTotal"
-        android:textSize="30sp"
-        tools:layout_editor_absoluteX="251dp"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_tipPercent" />
 
     <TextView
         android:id="@+id/billTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="33dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/billTotal"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintEnd_toStartOf="@+id/tipTotal"
+        app:layout_constraintTop_toBottomOf="@+id/resetButton" />
+
+    <TextView
+        android:id="@+id/tipTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/tipTotal"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/perPerson"
+        app:layout_constraintStart_toEndOf="@+id/billTotal"
+        app:layout_constraintTop_toBottomOf="@+id/calcButton" />
 
     <TextView
         android:id="@+id/perPerson"
         android:layout_width="242dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/totalPerPerson"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="486dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/billTotal" />
 
 </android.support.constraint.ConstraintLayout>

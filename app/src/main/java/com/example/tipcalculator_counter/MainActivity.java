@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button calc;
     TextView billTotal;
     TextView tipTotal;
-    TextView perPerson;
+    TextView perPersonTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         calc = findViewById(R.id.calcButton);
         billTotal = findViewById(R.id.billTotal);
         tipTotal = findViewById(R.id.tipTotal);
-        perPerson = findViewById(R.id.perPerson);
+        perPersonTotal = findViewById(R.id.perPersons);
 
 
         //set onClickListeners
@@ -60,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
                 billTotal.setText("Bill total:");
                 tipTotal.setText("Tip total:");
-                perPerson.setText("Total per person:");
+                perPersonTotal.setText("Total per person:");
+
 
                 }
         });
@@ -72,16 +74,19 @@ public class MainActivity extends AppCompatActivity {
 
                 double calcTip = calculateTip() * calcBill;
 
-                calcBill += calcTip;
+                double numOfPeople = Double.parseDouble(numPeople.getText().toString());
 
-                double totalPerPerson = Double.parseDouble(numPeople.getText().toString());
 
-                totalPerPerson = calcBill / totalPerPerson;
+                double finalBillTotal = calcTip + calcBill;
 
-                billTotal.setText("Bill total:" + calcBill);
-                tipTotal.setText("Tip total:" + calcTip);
-                perPerson.setText("Total per person:" + totalPerPerson);
 
+                tipTotal.setText(String.format("Tip total:" + "%.2f",calcBill));
+                billTotal.setText(String.format("Bill total:" + "%.2f",finalBillTotal));
+
+                finalBillTotal /= numOfPeople;
+
+
+                perPersonTotal.setText(String.format("Total per person:" + "%.2f",finalBillTotal));
 
 
             }
@@ -103,6 +108,12 @@ public class MainActivity extends AppCompatActivity {
             tip = .25;
         }else{      //grab custom tip from editText field
             tip = Double.parseDouble(customTip.getText().toString());
+
+
+            if(tip > 1){        //if tip is already not a decimal
+                tip = tip / 100;
+            }
+
 
         }
         return tip;

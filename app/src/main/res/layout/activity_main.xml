@@ -9,9 +9,9 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="38dp"
+        android:layout_width="129dp"
+        android:layout_height="131dp"
+        android:layout_marginEnd="31dp"
         android:checkedButton="@+id/tip15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rg_label">
@@ -53,12 +53,12 @@
         android:id="@+id/rg_label"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="5dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/rb_label"
         android:textAlignment="center"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,10 +66,11 @@
         android:id="@+id/tf_tipPercent"
         android:layout_width="144dp"
         android:layout_height="46dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/tip_input"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
@@ -79,42 +80,44 @@
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="29dp"
         android:ems="10"
         android:hint="@string/numPeople"
         android:inputType="number"
         android:textAlignment="center"
-        app:layout_constraintBaseline_toBaselineOf="@+id/rg_label"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/tf_billAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="@string/billAmount"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tf_numOfPeople" />
 
     <Button
         android:id="@+id/resetButton"
-        android:layout_width="191dp"
-        android:layout_height="wrap_content"
+        android:layout_width="186dp"
+        android:layout_height="127dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/resButton"
         app:layout_constraintEnd_toStartOf="@+id/calcButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_tipPercent" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_billAmount" />
 
     <Button
         android:id="@+id/calcButton"
-        android:layout_width="191dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="186dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:text="@string/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,32 +128,32 @@
         android:id="@+id/billTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="33dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="35dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/billTotal"
         android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/tipTotal"
-        app:layout_constraintTop_toBottomOf="@+id/resetButton" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tipTotal" />
 
     <TextView
         android:id="@+id/tipTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="33dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/tipTotal"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/perPerson"
-        app:layout_constraintStart_toEndOf="@+id/billTotal"
-        app:layout_constraintTop_toBottomOf="@+id/calcButton" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resetButton" />
 
     <TextView
-        android:id="@+id/perPerson"
-        android:layout_width="242dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
+        android:id="@+id/perPersons"
+        android:layout_width="391dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="37dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/totalPerPerson"
         android:textSize="30sp"

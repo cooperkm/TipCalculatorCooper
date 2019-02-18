@@ -2,6 +2,7 @@ package com.example.tipcalculator_counter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 perPersonTotal.setText("Total per person:");
 
 
-                }
+            }
         });
 
         calc.setOnClickListener(new View.OnClickListener() {
@@ -80,24 +81,22 @@ public class MainActivity extends AppCompatActivity {
                 double finalBillTotal = calcTip + calcBill;
 
 
-                tipTotal.setText(String.format("Tip total:" + "%.2f",calcBill));
-                billTotal.setText(String.format("Bill total:" + "%.2f",finalBillTotal));
+                tipTotal.setText(String.format("Tip total:" + "%.2f", calcBill));
+                billTotal.setText(String.format("Bill total:" + "%.2f", finalBillTotal));
 
                 finalBillTotal /= numOfPeople;
 
 
-                perPersonTotal.setText(String.format("Total per person:" + "%.2f",finalBillTotal));
+                perPersonTotal.setText(String.format("Total per person:" + "%.2f", finalBillTotal));
 
 
             }
         });
-
     }
 
     private double calculateTip(){
         double tip = 0;
 
-        //bad conditional statement
         //grab which percent tip
 
         if(tip15.isChecked()){
@@ -127,6 +126,41 @@ public class MainActivity extends AppCompatActivity {
 
         return bill;
     }
+
+    //save the state when rotated
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        String billStr;
+        String tipStr;
+        String peopleStr;
+
+        billStr = billTotal.getText().toString();
+        tipStr = tipTotal.getText().toString();
+        peopleStr = perPersonTotal.getText().toString();
+
+        outState.putString("billStrKey", billStr);
+        outState.putString("tipStrKey", tipStr);
+        outState.putString("peopleStrKey", peopleStr);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle bundle){
+        super.onRestoreInstanceState(bundle);
+
+        String billStr = bundle.getString("billStrKey");
+        String tipStr = bundle.getString("tipStrKey");
+        String peopleStr = bundle.getString("peopleStrKey");
+
+       billTotal.setText(billStr);
+       tipTotal.setText(tipStr);
+       perPersonTotal.setText(peopleStr);
+
+    }
+
 
 
 }

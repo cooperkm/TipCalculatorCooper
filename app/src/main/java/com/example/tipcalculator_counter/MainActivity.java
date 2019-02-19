@@ -42,11 +42,14 @@ public class MainActivity extends AppCompatActivity {
         customTip = findViewById(R.id.tf_tipPercent);
         numPeople = findViewById(R.id.tf_numOfPeople);
         billAmount = findViewById(R.id.tf_billAmount);
+
         reset = findViewById(R.id.resetButton);
         calc = findViewById(R.id.calcButton);
+
         billTotal = findViewById(R.id.billTotal);
         tipTotal = findViewById(R.id.tipTotal);
         perPersonTotal = findViewById(R.id.perPersons);
+
 
 
         //set onClickListeners
@@ -73,15 +76,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 double calcBill = calculateBill();
 
+
+
                 double calcTip = calculateTip() * calcBill;
 
-                double numOfPeople = Double.parseDouble(numPeople.getText().toString());
+                double numOfPeople = 1;
+
+                if(!(numPeople.getText().toString().isEmpty())){
+                    numOfPeople =  Double.parseDouble(numPeople.getText().toString());
+                }
+
 
 
                 double finalBillTotal = calcTip + calcBill;
 
 
-                tipTotal.setText(String.format("Tip total:" + "%.2f", calcBill));
+                tipTotal.setText(String.format("Tip total:" + "%.2f", calcTip));
+
                 billTotal.setText(String.format("Bill total:" + "%.2f", finalBillTotal));
 
                 finalBillTotal /= numOfPeople;
@@ -106,12 +117,20 @@ public class MainActivity extends AppCompatActivity {
         }else if (tip25.isChecked()){
             tip = .25;
         }else{      //grab custom tip from editText field
-            tip = Double.parseDouble(customTip.getText().toString());
 
 
-            if(tip > 1){        //if tip is already not a decimal
-                tip = tip / 100;
+            if(customTip.getText().toString().isEmpty()){
+
+                return tip;
+
+            }else {
+                tip = Double.parseDouble(customTip.getText().toString());
+
+                if (tip > 1) {        //if tip is already not a decimal
+                    tip = tip / 100;
+                }
             }
+
 
 
         }
@@ -121,10 +140,18 @@ public class MainActivity extends AppCompatActivity {
 
     private double calculateBill(){
 
-        double bill = Double.parseDouble(billAmount.getText().toString());
+        double bill = 0;
+
+        if(billAmount.getText().toString().isEmpty()){
+            return bill;
+        }else{
+            bill = Double.parseDouble(billAmount.getText().toString());
 
 
-        return bill;
+            return bill;
+        }
+
+
     }
 
     //save the state when rotated
